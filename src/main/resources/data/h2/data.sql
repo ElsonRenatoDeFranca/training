@@ -1,2 +1,2 @@
-insert into customer (id,firstName,lastName,passport) values('10001','Ranga', 'Suna', 'E1234567');
-insert into customer (id,firstName,lastName,passport) values('10002','Elson', 'Franca', 'E1234567');
+insert into customers (CUST_ID,FIRST_NAME,LAST_NAME,PASSPORT) values('10001','Ranga', 'Suna', 'E1234567');
+insert into customers (CUST_ID,FIRST_NAME,LAST_NAME,PASSPORT) values('10002','Elson', 'Franca', 'E1234567');

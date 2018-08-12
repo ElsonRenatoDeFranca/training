@@ -11,14 +11,15 @@ public interface IDemoAppService {
      *
      * @return
      */
-    public List<Customer> findAll();
+    List<Customer> findAll();
 
     /**
      *
      * @param id
      * @return
      */
-    public Customer findCustomerById(String id);
+    Customer findCustomerById(String id);
+
 
 
     /**
@@ -26,19 +27,19 @@ public interface IDemoAppService {
      * @param customer
      * @return
      */
-    public void saveCustomer(Customer customer);
+    void saveCustomer(Customer customer);
 
     /**
      *
      * @param id
      * @return
      */
-    public void updateCustomer(String id, Customer customer);
+    void updateCustomer(String id, Customer customer);
 
     /**
      *
      * @param id
      */
-    public void deleteCustomer(String id);
+    void deleteCustomer(String id);
 
 }

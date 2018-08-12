@@ -14,7 +14,6 @@ import java.util.List;
 public class DemoAppServiceImpl implements IDemoAppService {
 
     @Autowired
-    //@Qualifier("DemoAppRepository")
     private DemoAppRepository demoAppDAO;
 
     @Override
