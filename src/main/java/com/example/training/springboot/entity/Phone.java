@@ -28,7 +28,7 @@ public class Phone {
     @Id
     @Column(name = "PHONE_ID", nullable = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private String id;
+    private Long id;
 
     @Column(name = "PHONE_NUMBER", length = 50)
     private String phoneNumber;

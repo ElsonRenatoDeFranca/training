@@ -4,7 +4,7 @@ import com.example.training.springboot.entity.Person;
 
 import java.util.List;
 
-public interface IDemoAppService {
+public interface IPersonService {
 
 
     /**
@@ -18,26 +18,26 @@ public interface IDemoAppService {
      * @param id
      * @return
      */
-    Person findCustomerById(Long id);
+    Person findPersonById(Long id);
 
 
     /**
      *
      * @param person
      */
-    void saveCustomer(Person person);
+    void savePerson(Person person);
 
     /**
      *
      * @param id
      * @return
      */
-    void updateCustomer(Long id, Person person);
+    void updatePerson(Long id, Person person);
 
     /**
      *
      * @param id
      */
-    void deleteCustomer(Long id);
+    void deletePerson(Long id);
 
 }
