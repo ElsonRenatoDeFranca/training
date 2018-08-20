@@ -1,10 +1,9 @@
 package com.example.training.springboot.service.impl;
 
 import com.example.training.springboot.dao.DemoAppRepository;
-import com.example.training.springboot.entity.Customer;
+import com.example.training.springboot.entity.Person;
 import com.example.training.springboot.service.IDemoAppService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -17,29 +16,29 @@ public class DemoAppServiceImpl implements IDemoAppService {
     private DemoAppRepository demoAppDAO;
 
     @Override
-    public List<Customer> findAll() {
-        List<Customer> customers = new ArrayList<>();
-        demoAppDAO.findAll().forEach(customers::add);
-        return customers;
+    public List<Person> findAll() {
+        List<Person> people = new ArrayList<>();
+        demoAppDAO.findAll().forEach(people::add);
+        return people;
     }
 
     @Override
-    public Customer findCustomerById(String id) {
+    public Person findCustomerById(Long id) {
         return demoAppDAO.findById(id).get();
     }
 
     @Override
-    public void saveCustomer(Customer topic) {
-        this.demoAppDAO.save(topic);
+    public void saveCustomer(Person person) {
+        this.demoAppDAO.save(person);
     }
 
     @Override
-    public void updateCustomer(String id, Customer customer) {
-        demoAppDAO.save(customer);
+    public void updateCustomer(Long id, Person person) {
+        demoAppDAO.save(person);
     }
 
     @Override
-    public void deleteCustomer(String id) {
+    public void deleteCustomer(Long id) {
         this.demoAppDAO.deleteById(id);
     }
 }

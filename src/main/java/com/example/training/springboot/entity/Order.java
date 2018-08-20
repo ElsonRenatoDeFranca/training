@@ -5,7 +5,16 @@ import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import java.util.Date;
 import java.util.List;
 
@@ -14,6 +23,7 @@ import java.util.List;
 @NoArgsConstructor
 @ToString
 @EqualsAndHashCode
+
 public class Order {
 
     @Id
@@ -21,7 +31,7 @@ public class Order {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long orderId;
 
-    @Column(name = "CUST_ID")
+    @Column(name = "CUST_ID",insertable = false, updatable = false)
     private long custId;
 
     @Column(name = "TOTAL_PRICE", precision = 2)
@@ -37,20 +47,15 @@ public class Order {
     @JoinColumn(name="CUST_ID",referencedColumnName="CUST_ID")
     private Customer customer;
 
-    @OneToOne(optional=false,cascade=CascadeType.ALL,
-            mappedBy="order",targetEntity=Invoice.class)
-    private Invoice invoice;
-
     @Column(name = "LAST_UPDATED_TIME")
     private Date updatedTime;
 
-    @ManyToMany(fetch=FetchType.LAZY)
+    @ManyToMany(fetch= FetchType.LAZY)
     @JoinTable(name="ORDER_ITEMS",
             joinColumns=@JoinColumn(name="ORDER_ID",referencedColumnName="ORDER_ID"),
             inverseJoinColumns=@JoinColumn(name="PROD_ID", referencedColumnName="PROD_ID")
     )
     private List<Product> productList;
-
 
 
 

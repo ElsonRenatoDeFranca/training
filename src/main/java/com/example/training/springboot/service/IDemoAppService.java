@@ -1,6 +1,6 @@
 package com.example.training.springboot.service;
 
-import com.example.training.springboot.entity.Customer;
+import com.example.training.springboot.entity.Person;
 
 import java.util.List;
 
@@ -11,35 +11,33 @@ public interface IDemoAppService {
      *
      * @return
      */
-    List<Customer> findAll();
+    List<Person> findAll();
 
     /**
      *
      * @param id
      * @return
      */
-    Customer findCustomerById(String id);
-
+    Person findCustomerById(Long id);
 
 
     /**
      *
-     * @param customer
-     * @return
+     * @param person
      */
-    void saveCustomer(Customer customer);
+    void saveCustomer(Person person);
 
     /**
      *
      * @param id
      * @return
      */
-    void updateCustomer(String id, Customer customer);
+    void updateCustomer(Long id, Person person);
 
     /**
      *
      * @param id
      */
-    void deleteCustomer(String id);
+    void deleteCustomer(Long id);
 
 }

@@ -13,30 +13,29 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
-import java.util.List;
 
-
+@Entity(name = "PHONE_DETAILS")
 @Data
 @ToString
 @EqualsAndHashCode
 @RequiredArgsConstructor
-@Entity(name = "CUSTOMERS")
 
-public class Customer {
+public class PhoneDetails {
 
     @Id
-    @Column(name = "CUST_ID", nullable = false)
+    @Column(name = "PHONE_DETAILS_ID", nullable = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private String id;
+    private Long id;
 
-    @OneToMany(mappedBy="customer",targetEntity = Order.class,
-            fetch= FetchType.LAZY)
-    private List<Order> orders;
+    @Column(name = "PROVIDER")
+    private String provider;
+
+    @Column(name = "TECHNOLOGY")
+    private String technology;
 
     @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "PERSON_ID")
-    private Person customerInfo;
+    @JoinColumn(name = "PHONE_ID")
+    private Phone phone;
 
 }
