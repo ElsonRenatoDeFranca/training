@@ -42,7 +42,7 @@ public class Person {
     @OneToOne(mappedBy = "docOwner", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
     private DocumentIdentification documentIdentification;
 
-    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    @OneToMany(mappedBy = "personId", targetEntity = Address.class,fetch=FetchType.LAZY )
     private List<Address> addresses = new ArrayList<>();
 
     @OneToMany(mappedBy = "phoneOwner", targetEntity = Phone.class,fetch=FetchType.LAZY )
