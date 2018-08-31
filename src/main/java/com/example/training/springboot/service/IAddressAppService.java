@@ -6,6 +6,14 @@ import java.util.List;
 
 public interface IAddressAppService {
 
+
+
+    /**
+     *
+     * @return
+     */
+    List<Address> findAllAddresses();
+
     /**
      *
      * @return

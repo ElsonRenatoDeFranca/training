@@ -51,6 +51,10 @@ public class DemoAppController {
 
 
 
+    @RequestMapping("/addresses")
+    public List<Address> findAllAddresses() {
+        return addressAppService.findAllAddresses();
+    }
 
     @RequestMapping("/person/{personId}/address")
     public List<Address> findAllAddressesByPersonId(@PathVariable Long personId){

@@ -15,10 +15,17 @@ public class AddressServiceAppImpl implements IAddressAppService {
     @Autowired
     private AddressAppRepository addressAppRepository;
 
+
+    @Override
+    public List<Address> findAllAddresses() {
+        List<Address> addressList = new ArrayList<>();
+        addressAppRepository.findAll().forEach(addressList::add);
+        return addressList;
+    }
+
     @Override
     public List<Address> findAllAddressesByPersonId(Long personId) {
-        List<Address> addresses = new ArrayList<>();
-        addressAppRepository.findByPersonId(personId).forEach(addresses::add);
+        List<Address> addresses = addressAppRepository.findAddressByPersonId(personId);
         return addresses;
     }
 

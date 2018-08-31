@@ -2,12 +2,12 @@ package com.example.training.springboot.dao;
 
 
 import com.example.training.springboot.entity.Person;
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
 
 
-public interface PersonAppRepository extends CrudRepository<Person, Long> {
+public interface PersonAppRepository extends JpaRepository<Person, Long> {
 
     Person findByLastName(String name);
 
