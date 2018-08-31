@@ -39,10 +39,10 @@ public class Person {
     @Column(name = "PERSON_LAST_NAME", nullable = false,length = 50)
     private String lastName;
 
-    @OneToOne(mappedBy = "docOwner", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
+    @OneToOne(mappedBy = "personId", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
     private DocumentIdentification documentIdentification;
 
-    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    @OneToMany(mappedBy = "personId", targetEntity = Address.class,fetch=FetchType.LAZY )
     private List<Address> addresses = new ArrayList<>();
 
     @OneToMany(mappedBy = "phoneOwner", targetEntity = Phone.class,fetch=FetchType.LAZY )

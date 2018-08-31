@@ -28,11 +28,14 @@ public class PhoneDetails {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "PROVIDER")
-    private String provider;
+    @Column(name = "MANUFACTURER")
+    private String manufacturer;
 
-    @Column(name = "TECHNOLOGY")
-    private String technology;
+    @Column(name = "MODEL")
+    private String model;
+
+    @Column(name = "COLOR")
+    private String color;
 
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "PHONE_ID")
