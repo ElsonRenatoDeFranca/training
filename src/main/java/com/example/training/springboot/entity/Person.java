@@ -4,6 +4,8 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.RequiredArgsConstructor;
 import lombok.ToString;
+import org.hibernate.annotations.NotFound;
+import org.hibernate.annotations.NotFoundAction;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -12,7 +14,6 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import java.util.ArrayList;
@@ -40,15 +41,19 @@ public class Person {
     private String lastName;
 
     @OneToOne(mappedBy = "personId", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
+    @NotFound(action = NotFoundAction.IGNORE)
     private DocumentIdentification documentIdentification;
 
-    @OneToMany(mappedBy = "personId", targetEntity = Address.class,fetch=FetchType.LAZY )
+    @OneToMany(mappedBy = "personId", targetEntity = Address.class,fetch=FetchType.LAZY , cascade = CascadeType.ALL)
+    @NotFound(action = NotFoundAction.IGNORE)
     private List<Address> addresses = new ArrayList<>();
 
-    @OneToMany(mappedBy = "phoneOwner", targetEntity = Phone.class,fetch=FetchType.LAZY )
+    @OneToMany(mappedBy = "phoneOwner", targetEntity = Phone.class,fetch=FetchType.LAZY, cascade = CascadeType.ALL )
+    @NotFound(action = NotFoundAction.IGNORE)
     private List<Phone> phones = new ArrayList<>();
 
     @OneToOne(mappedBy = "customerInfo", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
+    @NotFound(action = NotFoundAction.IGNORE)
     private Customer customer;
 
 
