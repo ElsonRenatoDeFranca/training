@@ -45,6 +45,6 @@ public class DocumentIdentification {
 
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "PERSON_ID")
-    private Person docOwner;
+    private Person personId;
 
 }

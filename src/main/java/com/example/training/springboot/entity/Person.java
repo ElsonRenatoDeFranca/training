@@ -39,7 +39,7 @@ public class Person {
     @Column(name = "PERSON_LAST_NAME", nullable = false,length = 50)
     private String lastName;
 
-    @OneToOne(mappedBy = "docOwner", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
+    @OneToOne(mappedBy = "personId", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
     private DocumentIdentification documentIdentification;
 
     @OneToMany(mappedBy = "personId", targetEntity = Address.class,fetch=FetchType.LAZY )
