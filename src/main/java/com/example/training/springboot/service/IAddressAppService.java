@@ -18,7 +18,7 @@ public interface IAddressAppService {
      *
      * @return
      */
-    List<Address> findAllAddressesByPersonId(Long personId);
+    List<Address> findByPersonId(Long personId);
 
     /**
      *

@@ -57,9 +57,9 @@ public class DemoAppController {
     }
 
     @RequestMapping("/person/{personId}/address")
-    public List<Address> findAllAddressesByPersonId(@PathVariable Long personId){
+    public List<Address> findByPersonId(@PathVariable Long personId){
 
-        return addressAppService.findAllAddressesByPersonId(personId);
+        return addressAppService.findByPersonId(personId);
     }
 
 

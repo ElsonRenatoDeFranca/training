@@ -16,13 +16,14 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
+import javax.persistence.Table;
 
-@Entity(name = "PHONE")
 @Data
 @ToString
 @EqualsAndHashCode
 @RequiredArgsConstructor
-
+@Entity(name = "Phone")
+@Table(name = "PHONE")
 public class Phone {
 
     @Id

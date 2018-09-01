@@ -14,13 +14,14 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
+import javax.persistence.Table;
 
-@Entity(name = "PHONE_DETAILS")
 @Data
 @ToString
 @EqualsAndHashCode
 @RequiredArgsConstructor
-
+@Entity(name = "PhoneDetails")
+@Table(name = "PHONE_DETAILS")
 public class PhoneDetails {
 
     @Id

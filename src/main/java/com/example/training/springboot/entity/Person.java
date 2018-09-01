@@ -4,6 +4,8 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.RequiredArgsConstructor;
 import lombok.ToString;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 import org.hibernate.annotations.NotFound;
 import org.hibernate.annotations.NotFoundAction;
 
@@ -16,14 +18,16 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import javax.persistence.Table;
 import java.util.ArrayList;
 import java.util.List;
 
-@Entity(name = "PERSON")
 @Data
 @ToString
 @EqualsAndHashCode
 @RequiredArgsConstructor
+@Entity(name = "Person")
+@Table(name = "PERSON")
 public class Person {
 
     @Id
@@ -45,6 +49,7 @@ public class Person {
     private DocumentIdentification documentIdentification;
 
     @OneToMany(mappedBy = "personId", targetEntity = Address.class,fetch=FetchType.LAZY , cascade = CascadeType.ALL)
+    @Fetch(FetchMode.SUBSELECT)
     @NotFound(action = NotFoundAction.IGNORE)
     private List<Address> addresses = new ArrayList<>();
 

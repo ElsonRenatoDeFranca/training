@@ -9,7 +9,8 @@ import java.util.List;
 
 public interface AddressAppRepository extends JpaRepository<Address, Long> {
 
-    @Query(value = "select * from ADDRESS a where a.PERSON_ID = :personId", nativeQuery = true)
-    List<Address> findAddressByPersonId(@Param("personId") Long personId);
+    @Query(value = "select * from ADDRESSES a where a.PERSON_ID = :personId", nativeQuery = true)
+    //@Query("select a from Address a where a.personId = :personId")
+    List<Address> findByPersonId(@Param("personId") Long personId);
 
 }

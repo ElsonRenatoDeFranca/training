@@ -9,12 +9,12 @@ import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
 
-@Entity(name = "PRODUCT")
 @Data
 @NoArgsConstructor
 @ToString
 @EqualsAndHashCode
-
+@Entity(name = "Product")
+@Table(name = "PRODUCT")
 public class Product {
 
     @Id

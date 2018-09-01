@@ -15,6 +15,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import javax.persistence.Table;
 import java.util.List;
 
 
@@ -22,8 +23,8 @@ import java.util.List;
 @ToString
 @EqualsAndHashCode
 @RequiredArgsConstructor
-@Entity(name = "CUSTOMERS")
-
+@Entity(name = "Customer")
+@Table(name = "CUSTOMERS")
 public class Customer {
 
     @Id
