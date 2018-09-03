@@ -24,8 +24,8 @@ public class AddressServiceAppImpl implements IAddressAppService {
     }
 
     @Override
-    public List<Address> findAllAddressesByPersonId(Long personId) {
-        List<Address> addresses = addressAppRepository.findAddressByPersonId(personId);
+    public List<Address> findByPersonId(Long personId) {
+        List<Address> addresses = addressAppRepository.findByPersonId(personId);
         return addresses;
     }
 

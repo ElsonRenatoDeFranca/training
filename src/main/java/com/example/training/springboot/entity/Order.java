@@ -15,15 +15,16 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 import java.util.Date;
 import java.util.List;
 
-@Entity(name = "ORDERS")
 @Data
 @NoArgsConstructor
 @ToString
 @EqualsAndHashCode
-
+@Table(name = "ORDERS")
+@Entity(name = "Order")
 public class Order {
 
     @Id
