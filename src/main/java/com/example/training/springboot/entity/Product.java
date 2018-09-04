@@ -13,14 +13,13 @@ import java.util.List;
 @NoArgsConstructor
 @ToString
 @EqualsAndHashCode
-@Entity(name = "Product")
-@Table(name = "PRODUCT")
+@Entity(name = "PRODUCT")
 public class Product {
 
     @Id
     @Column(name = "PROD_ID", nullable = false)
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long prodId;
+    private Long prodId;
 
     @Column(name = "PROD_NAME", nullable = false,length = 50)
     private String prodName;

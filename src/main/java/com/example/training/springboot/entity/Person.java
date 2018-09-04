@@ -18,7 +18,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
-import javax.persistence.Table;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -26,8 +25,7 @@ import java.util.List;
 @ToString
 @EqualsAndHashCode
 @RequiredArgsConstructor
-@Entity(name = "Person")
-@Table(name = "PERSON")
+@Entity(name = "PERSON")
 public class Person {
 
     @Id
@@ -44,12 +42,11 @@ public class Person {
     @Column(name = "PERSON_LAST_NAME", nullable = false,length = 50)
     private String lastName;
 
-    @OneToOne(mappedBy = "personId", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
+    @OneToOne(mappedBy = "person", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
     @NotFound(action = NotFoundAction.IGNORE)
     private DocumentIdentification documentIdentification;
 
-    @OneToMany(mappedBy = "personId", targetEntity = Address.class,fetch=FetchType.LAZY , cascade = CascadeType.ALL)
-    @Fetch(FetchMode.SUBSELECT)
+    @OneToMany(mappedBy = "person", targetEntity = Address.class,fetch=FetchType.LAZY , cascade = CascadeType.ALL)
     @NotFound(action = NotFoundAction.IGNORE)
     private List<Address> addresses = new ArrayList<>();
 

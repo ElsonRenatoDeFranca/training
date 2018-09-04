@@ -23,14 +23,13 @@ import java.util.List;
 @NoArgsConstructor
 @ToString
 @EqualsAndHashCode
-@Table(name = "ORDERS")
-@Entity(name = "Order")
+@Entity(name = "ORDERS")
 public class Order {
 
     @Id
     @Column(name = "ORDER_ID", nullable = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long orderId;
+    private Long orderId;
 
     @Column(name = "CUST_ID",insertable = false, updatable = false)
     private long custId;
