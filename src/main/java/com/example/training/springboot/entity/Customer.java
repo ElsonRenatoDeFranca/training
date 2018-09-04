@@ -23,8 +23,7 @@ import java.util.List;
 @ToString
 @EqualsAndHashCode
 @RequiredArgsConstructor
-@Entity(name = "Customer")
-@Table(name = "CUSTOMERS")
+@Entity(name = "CUSTOMERS")
 public class Customer {
 
     @Id

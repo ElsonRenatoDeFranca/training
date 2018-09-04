@@ -21,8 +21,7 @@ import java.util.Date;
 @ToString
 @EqualsAndHashCode
 @RequiredArgsConstructor
-@Entity(name = "DocumentIdentification")
-@Table(name = "DOCUMENT_IDENTIFICATION")
+@Entity(name = "DOCUMENT_IDENTIFICATION")
 public class DocumentIdentification {
 
 
@@ -45,6 +44,6 @@ public class DocumentIdentification {
 
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "PERSON_ID")
-    private Person personId;
+    private Person person;
 
 }

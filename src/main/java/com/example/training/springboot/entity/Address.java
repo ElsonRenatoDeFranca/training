@@ -2,7 +2,6 @@ package com.example.training.springboot.entity;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.ToString;
 
@@ -14,14 +13,12 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.Table;
 
 @Data
 @ToString
 @EqualsAndHashCode
 @RequiredArgsConstructor
-@Entity(name = "Address")
-@Table(name = "ADDRESSES")
+@Entity(name = "ADDRESSES")
 public class Address {
 
     @Id
@@ -40,7 +37,7 @@ public class Address {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "PERSON_ID")
-    private Person personId;
+    private Person person;
 
 
 }

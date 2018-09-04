@@ -20,8 +20,7 @@ import javax.persistence.Table;
 @ToString
 @EqualsAndHashCode
 @RequiredArgsConstructor
-@Entity(name = "PhoneDetails")
-@Table(name = "PHONE_DETAILS")
+@Entity(name = "PHONE_DETAILS")
 public class PhoneDetails {
 
     @Id
