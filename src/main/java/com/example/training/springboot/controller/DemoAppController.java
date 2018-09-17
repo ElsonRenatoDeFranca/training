@@ -5,6 +5,8 @@ import com.example.training.springboot.entity.Person;
 import com.example.training.springboot.service.IAddressAppService;
 import com.example.training.springboot.service.IPersonService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -32,8 +34,12 @@ public class DemoAppController {
     }
 
     @RequestMapping(method=RequestMethod.POST, value="/people")
-    public void save(@RequestBody Person person){
+    public void save(@RequestBody Person person) {
+        Address address = new Address();
 
+        if(person != null){
+
+        }
         personService.savePerson(person);
     }
 
@@ -56,8 +62,10 @@ public class DemoAppController {
         return addressAppService.findAllAddresses();
     }
 
-    @RequestMapping("/person/{personId}/address")
+    @RequestMapping(method = RequestMethod.GET, value = "/person/{personId}/address")
     public List<Address> findByPersonId(@PathVariable Long personId){
+
+        Person person = personService.findPersonById(personId);
 
         return addressAppService.findByPersonId(personId);
     }
