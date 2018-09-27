@@ -34,24 +34,11 @@ public class Person implements Serializable {
     @Column(name = "PERSON_LAST_NAME", nullable = false,length = 50)
     private String lastName;
 
-    //@OneToMany(mappedBy = "person", cascade = CascadeType.ALL, orphanRemoval = true)
+    @Column(name = "PERSON_EMAIL", nullable = false,length = 50)
+    private String email;
+
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Phone> phones = new ArrayList<>();
-
-
-    /*public void addPhone(Phone phone) {
-        phones.add( phone );
-        phone.setPerson( this );
-    }
-
-    public void removePhone(Phone phone) {
-        phones.remove( phone );
-        phone.setPerson( null );
-    }
-    */
-
-
-
 
     @Override
     public String toString() {

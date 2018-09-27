@@ -57,11 +57,19 @@ public class PersonServiceImpl implements IPersonService {
         person1.setFirstName(person.getFirstName());
         person1.setMiddleName(person.getMiddleName());
         person1.setLastName(person.getLastName());
+        person1.setEmail(person.getEmail());
 
         if(null != person.getPhones()){
             for(Phone phone : phoneList){
                 Phone myPhone = new Phone();
+                PhoneDetails phoneDetails = new PhoneDetails();
+
                 myPhone.setPhoneNumber(phone.getPhoneNumber());
+                phoneDetails.setColor(phone.getDetails().getColor());
+                phoneDetails.setModel(phone.getDetails().getModel());
+                phoneDetails.setManufacturer(phone.getDetails().getManufacturer());
+
+                myPhone.setDetails(phoneDetails);
                 person1.getPhones().add(myPhone);
             }
         }

@@ -36,9 +36,9 @@ public class PersonAppController {
 
     @RequestMapping(method=RequestMethod.POST, value="/people")
     public void save(@RequestBody Person person) {
+
         personService.savePerson(person);
     }
-
 
 
 

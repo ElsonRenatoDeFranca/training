@@ -14,11 +14,11 @@ import java.io.Serializable;
 /**
  * Created by e068635 on 9/21/2018.
  */
-//@Entity(name = "PHONE_DETAILS")
-//@Data
+@Entity(name = "PHONE_DETAILS")
+@Data
 public class PhoneDetails implements Serializable{
 
-/*    @Id
+    @Id
     @Column(name = "PHONE_DETAILS_ID", nullable = false)
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
@@ -32,15 +32,9 @@ public class PhoneDetails implements Serializable{
     @Column(name = "COLOR")
     private String color;
 
-    @OneToOne(fetch = FetchType.LAZY)
+    @OneToOne
     @JoinColumn(name = "PHONE_ID")
     private Phone phone;
-
-    public void setPhone(Phone phone) {
-        this.phone = phone;
-        this.id = phone.getId();
-    }
-
 
     @Override
     public String toString() {
@@ -51,5 +45,4 @@ public class PhoneDetails implements Serializable{
                 ", id=" + id +
                 '}';
     }
-    */
 }

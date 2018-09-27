@@ -1,7 +1,6 @@
 package com.example.training.springboot.entity;
 
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -11,7 +10,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import java.io.Serializable;
 
@@ -30,28 +29,22 @@ public class Phone implements Serializable {
     @Column(name = "PHONE_NUMBER", length = 50)
     private String phoneNumber;
 
-    //@ManyToOne(fetch = FetchType.LAZY)
-    //@JoinColumn(name = "PERSON_ID")
-    //@ManyToOne
-    //private Person person;
+    //@OneToOne(mappedBy = "phone", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
+    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
+    private PhoneDetails details;
 
-    /*@OneToOne(mappedBy = "phone", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
-    private PhoneDetails phoneDetails;
 
     public void addDetails(PhoneDetails details) {
         details.setPhone( this );
-       // this.phoneDetails = details;
+        this.details = details;
     }
-
 
     public void removeDetails() {
-        if ( phoneDetails != null ) {
-            phoneDetails.setPhone( null );
-            this.phoneDetails = null;
+        if ( details != null ) {
+            details.setPhone( null );
+            this.details = null;
         }
     }
-    */
-
 
     @Override
     public String toString() {
