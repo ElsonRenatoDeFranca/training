@@ -3,12 +3,9 @@ package com.example.training.springboot.entity;
 import lombok.Data;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
 import java.io.Serializable;
 
 /**
@@ -32,17 +29,4 @@ public class PhoneDetails implements Serializable{
     @Column(name = "COLOR")
     private String color;
 
-    @OneToOne
-    @JoinColumn(name = "PHONE_ID")
-    private Phone phone;
-
-    @Override
-    public String toString() {
-        return "PhoneDetails{" +
-                "color='" + color + '\'' +
-                ", model='" + model + '\'' +
-                ", manufacturer='" + manufacturer + '\'' +
-                ", id=" + id +
-                '}';
-    }
 }

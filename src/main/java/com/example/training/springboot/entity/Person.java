@@ -9,6 +9,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -40,13 +41,7 @@ public class Person implements Serializable {
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Phone> phones = new ArrayList<>();
 
-    @Override
-    public String toString() {
-        return "Person{" +
-                "id=" + id +
-                ", firstName='" + firstName + '\'' +
-                ", middleName='" + middleName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                '}';
-    }
+    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
+    private Passport passportDetails;
+
 }

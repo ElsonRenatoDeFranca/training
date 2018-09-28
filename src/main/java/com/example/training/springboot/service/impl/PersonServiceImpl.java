@@ -1,6 +1,7 @@
 package com.example.training.springboot.service.impl;
 
 import com.example.training.springboot.dao.PersonAppRepository;
+import com.example.training.springboot.entity.Passport;
 import com.example.training.springboot.entity.Person;
 import com.example.training.springboot.entity.Phone;
 import com.example.training.springboot.entity.PhoneDetails;
@@ -54,10 +55,17 @@ public class PersonServiceImpl implements IPersonService {
 
         List<Phone> phoneList = person.getPhones();
         Person person1 = new Person();
+        Passport passport = new Passport();
+        passport.setDocSerialNumber(person.getPassportDetails().getDocSerialNumber());
+        passport.setExpirationDate(person.getPassportDetails().getExpirationDate());
+        passport.setIssueDate(person.getPassportDetails().getIssueDate());
+        passport.setIssuerCountry(person.getPassportDetails().getIssuerCountry());
+
         person1.setFirstName(person.getFirstName());
         person1.setMiddleName(person.getMiddleName());
         person1.setLastName(person.getLastName());
         person1.setEmail(person.getEmail());
+
 
         if(null != person.getPhones()){
             for(Phone phone : phoneList){
@@ -71,6 +79,7 @@ public class PersonServiceImpl implements IPersonService {
 
                 myPhone.setDetails(phoneDetails);
                 person1.getPhones().add(myPhone);
+                person1.setPassportDetails(passport);
             }
         }
         personAppRepository.save(person1);
