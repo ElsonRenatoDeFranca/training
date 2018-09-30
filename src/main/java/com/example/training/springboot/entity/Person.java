@@ -1,36 +1,32 @@
 package com.example.training.springboot.entity;
 
 import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.RequiredArgsConstructor;
-import lombok.ToString;
-import org.hibernate.annotations.Fetch;
-import org.hibernate.annotations.FetchMode;
-import org.hibernate.annotations.NotFound;
-import org.hibernate.annotations.NotFoundAction;
+import lombok.Getter;
+import lombok.Setter;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-@Data
-@ToString
-@EqualsAndHashCode
-@RequiredArgsConstructor
+/**
+ * Created by e068635 on 9/21/2018.
+ */
 @Entity(name = "PERSON")
-public class Person {
+@Data
+public class Person implements Serializable {
 
     @Id
     @Column(name = "PERSON_ID", nullable = false)
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
     @Column(name = "PERSON_FIRST_NAME", length = 50)
@@ -42,21 +38,72 @@ public class Person {
     @Column(name = "PERSON_LAST_NAME", nullable = false,length = 50)
     private String lastName;
 
-    @OneToOne(mappedBy = "person", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
-    @NotFound(action = NotFoundAction.IGNORE)
-    private DocumentIdentification documentIdentification;
+    @Column(name = "PERSON_EMAIL", nullable = false,length = 50)
+    private String email;
 
-    @OneToMany(mappedBy = "person", targetEntity = Address.class,fetch=FetchType.LAZY , cascade = CascadeType.ALL)
-    @NotFound(action = NotFoundAction.IGNORE)
-    private List<Address> addresses = new ArrayList<>();
-
-    @OneToMany(mappedBy = "phoneOwner", targetEntity = Phone.class,fetch=FetchType.LAZY, cascade = CascadeType.ALL )
-    @NotFound(action = NotFoundAction.IGNORE)
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Phone> phones = new ArrayList<>();
 
-    @OneToOne(mappedBy = "customerInfo", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
-    @NotFound(action = NotFoundAction.IGNORE)
-    private Customer customer;
+    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
+    private Passport passportDetails;
+
+    @ManyToMany(cascade = {CascadeType.ALL})
+    private List<Address> addresses = new ArrayList<>();
 
 
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getMiddleName() {
+        return middleName;
+    }
+
+    public void setMiddleName(String middleName) {
+        this.middleName = middleName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public List<Phone> getPhones() {
+        return phones;
+    }
+
+    public void setPhones(List<Phone> phones) {
+        this.phones = phones;
+    }
+
+    public Passport getPassportDetails() {
+        return passportDetails;
+    }
+
+    public void setPassportDetails(Passport passportDetails) {
+        this.passportDetails = passportDetails;
+    }
+
+    public List<Address> getAddresses() {
+        return addresses;
+    }
+
+    public void setAddresses(List<Address> addresses) {
+        this.addresses = addresses;
+    }
 }
