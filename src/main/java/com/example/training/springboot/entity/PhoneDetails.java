@@ -2,30 +2,23 @@ package com.example.training.springboot.entity;
 
 
 import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.RequiredArgsConstructor;
-import lombok.ToString;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
-import javax.persistence.Table;
+import java.io.Serializable;
 
-@Data
-@ToString
-@EqualsAndHashCode
-@RequiredArgsConstructor
+/**
+ * Created by e068635 on 9/21/2018.
+ */
 @Entity(name = "PHONE_DETAILS")
-public class PhoneDetails {
+@Data
+public class PhoneDetails implements Serializable{
 
     @Id
     @Column(name = "PHONE_DETAILS_ID", nullable = false)
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
     @Column(name = "MANUFACTURER")
@@ -37,8 +30,27 @@ public class PhoneDetails {
     @Column(name = "COLOR")
     private String color;
 
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "PHONE_ID")
-    private Phone phone;
+    public String getManufacturer() {
+        return manufacturer;
+    }
 
+    public void setManufacturer(String manufacturer) {
+        this.manufacturer = manufacturer;
+    }
+
+    public String getModel() {
+        return model;
+    }
+
+    public void setModel(String model) {
+        this.model = model;
+    }
+
+    public String getColor() {
+        return color;
+    }
+
+    public void setColor(String color) {
+        this.color = color;
+    }
 }

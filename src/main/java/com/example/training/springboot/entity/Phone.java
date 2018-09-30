@@ -2,42 +2,47 @@ package com.example.training.springboot.entity;
 
 
 import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.RequiredArgsConstructor;
-import lombok.ToString;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
-import javax.persistence.Table;
+import java.io.Serializable;
 
+/**
+ * Created by e068635 on 9/21/2018.
+ */
 @Data
-@ToString
-@EqualsAndHashCode
-@RequiredArgsConstructor
 @Entity(name = "PHONE")
-public class Phone {
+public class Phone implements Serializable {
 
     @Id
     @Column(name = "PHONE_ID", nullable = false)
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
     @Column(name = "PHONE_NUMBER", length = 50)
     private String phoneNumber;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "PERSON_ID")
-    private Person phoneOwner;
+    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
+    private PhoneDetails details;
 
-    @OneToOne(mappedBy = "phone", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
-    private PhoneDetails phoneDetails;
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
 
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
+    public PhoneDetails getDetails() {
+        return details;
+    }
+
+    public void setDetails(PhoneDetails details) {
+        this.details = details;
+    }
 }

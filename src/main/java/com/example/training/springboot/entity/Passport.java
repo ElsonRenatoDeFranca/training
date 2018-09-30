@@ -1,29 +1,21 @@
 package com.example.training.springboot.entity;
 
 import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.RequiredArgsConstructor;
-import lombok.ToString;
-
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.MapsId;
-import javax.persistence.OneToOne;
-import javax.persistence.PrimaryKeyJoinColumn;
-import javax.persistence.Table;
+import java.io.Serializable;
 import java.util.Date;
 
+/**
+ * Created by e068635 on 9/28/2018.
+ */
 @Data
-@Entity(name = "DOCUMENT_IDENTIFICATION")
-public class DocumentIdentification {
-
+@Entity(name = "PASSPORT")
+public class Passport implements Serializable {
 
     @Id
     @Column(name = "DOC_ID", nullable = false)
@@ -41,18 +33,6 @@ public class DocumentIdentification {
 
     @Column(name = "DOC_ISSUER_COUNTRY", length = 50)
     private String issuerCountry;
-
-    @OneToOne
-    @JoinColumn(name = "PERSON_ID")
-    private Person person;
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     public String getDocSerialNumber() {
         return docSerialNumber;
@@ -85,22 +65,4 @@ public class DocumentIdentification {
     public void setIssuerCountry(String issuerCountry) {
         this.issuerCountry = issuerCountry;
     }
-
-    public Person getPerson() {
-        return person;
-    }
-
-    public void setPerson(Person person) {
-        this.person = person;
-        this.id = person.getId();
-    }
-
-    /*public void setPerson(Person person) {
-        this.person = person;
-    }
-    */
-
-
-
-
 }
