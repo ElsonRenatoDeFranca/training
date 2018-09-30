@@ -72,7 +72,7 @@ public class PersonServiceImpl implements IPersonService {
                 phoneDetails.setColor(phone.getDetails().getColor());
                 phoneDetails.setModel(phone.getDetails().getModel());
                 phoneDetails.setManufacturer(phone.getDetails().getManufacturer());
-
+                phoneDetails.setPhoneType(phone.getDetails().getPhoneType());
                 myPhone.setDetails(phoneDetails);
                 person1.getPhones().add(myPhone);
                 person1.setPassportDetails(passport);

@@ -30,6 +30,9 @@ public class PhoneDetails implements Serializable{
     @Column(name = "COLOR")
     private String color;
 
+    @Column(name = "PHONE_TYPE")
+    private String phoneType;
+
     public String getManufacturer() {
         return manufacturer;
     }
@@ -52,5 +55,13 @@ public class PhoneDetails implements Serializable{
 
     public void setColor(String color) {
         this.color = color;
+    }
+
+    public String getPhoneType() {
+        return phoneType;
+    }
+
+    public void setPhoneType(String phoneType) {
+        this.phoneType = phoneType;
     }
 }
