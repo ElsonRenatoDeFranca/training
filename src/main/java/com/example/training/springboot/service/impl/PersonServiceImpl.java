@@ -18,14 +18,66 @@ import java.util.List;
  *
  * Used for testing
  *
+
+ [
  {
- "firstName":"Joaquina",
- "middleName":"Silverio",
- "lastName":"dos Reis",
- "phones":[
- { "phoneNumber":"99554-3456","phoneDetails":{"manufacturer": "Samsumg", "model": "S7", "color": "white"}}
+ "id": 1,
+ "firstName": "Elson",
+ "middleName": "Renato",
+ "lastName": "de Franca",
+ "email": "elson.renato.de.franca@gmail.com",
+ "phones": [
+ {
+ "id": 5,
+ "phoneNumber": "55 41 99503-1617",
+ "details": {
+ "id": 6,
+ "manufacturer": "Samsung",
+ "model": "S10",
+ "color": "White",
+ "phoneType": "MOBILE"
+ }
+ },
+ {
+ "id": 7,
+ "phoneNumber": "55 41 3964-6716",
+ "details": {
+ "id": 8,
+ "manufacturer": "Factory01",
+ "model": "546-TI",
+ "color": "White",
+ "phoneType": "LAND_LINE"
+ }
+ }
+ ],
+ "passportDetails": {
+ "id": 2,
+ "docSerialNumber": "KY543L",
+ "issueDate": "2018-01-15T00:00:00.000+0000",
+ "expirationDate": "2028-01-15T00:00:00.000+0000",
+ "issuerCountry": "BRA"
+ },
+ "addresses": [
+ {
+ "id": 3,
+ "number": "59",
+ "street": "Otavio Afonso da Silva",
+ "zipCode": "6578-890",
+ "city": "Curitiba"
+ },
+ {
+ "id": 4,
+ "number": "139",
+ "street": "Rua Joao Marchesini",
+ "zipCode": "87698-890",
+ "city": "Curitiba"
+ }
  ]
  }
+ ]
+
+
+
  *
  */
 @Service
