@@ -8,8 +8,4 @@ import java.util.List;
 
 
 public interface PersonAppRepository extends JpaRepository<Person, Long> {
-
-    Person findByLastName(String name);
-
-    List<Person> removeByLastName(String lastName);
 }

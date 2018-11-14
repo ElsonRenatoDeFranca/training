@@ -1,6 +1,8 @@
 package com.example.training.springboot.entity;
 
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -14,6 +16,8 @@ import java.util.Date;
  * Created by e068635 on 9/28/2018.
  */
 @Data
+@Getter
+@Setter
 @Entity(name = "PASSPORT")
 public class Passport implements Serializable {
 
@@ -34,35 +38,4 @@ public class Passport implements Serializable {
     @Column(name = "DOC_ISSUER_COUNTRY", length = 50)
     private String issuerCountry;
 
-    public String getDocSerialNumber() {
-        return docSerialNumber;
-    }
-
-    public void setDocSerialNumber(String docSerialNumber) {
-        this.docSerialNumber = docSerialNumber;
-    }
-
-    public Date getIssueDate() {
-        return issueDate;
-    }
-
-    public void setIssueDate(Date issueDate) {
-        this.issueDate = issueDate;
-    }
-
-    public Date getExpirationDate() {
-        return expirationDate;
-    }
-
-    public void setExpirationDate(Date expirationDate) {
-        this.expirationDate = expirationDate;
-    }
-
-    public String getIssuerCountry() {
-        return issuerCountry;
-    }
-
-    public void setIssuerCountry(String issuerCountry) {
-        this.issuerCountry = issuerCountry;
-    }
 }

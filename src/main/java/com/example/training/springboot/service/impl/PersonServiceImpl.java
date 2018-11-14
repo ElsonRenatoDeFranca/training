@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 /**
  * Created by e068635 on 9/21/2018.
@@ -105,11 +106,15 @@ public class PersonServiceImpl implements IPersonService {
 
     @Override
     public void updatePerson(Long id, Person person) {
-        personAppRepository.save(person);
+        person.setId(id);
+        Optional<Person> existingPerson = personAppRepository.findById(id);
+        existingPerson.ifPresent(p -> personAppRepository.save(person));
     }
 
     @Override
     public void deletePerson(Long id) {
+        Optional<Person> existingPerson = personAppRepository.findById(id);
+        existingPerson.ifPresent(person -> personAppRepository.deleteById(id));
     }
 
 }
