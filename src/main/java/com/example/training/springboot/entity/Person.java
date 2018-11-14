@@ -23,6 +23,8 @@ import java.util.List;
  */
 @Entity(name = "PERSON")
 @Data
+@Getter
+@Setter
 public class Person implements Serializable {
 
     @Id
@@ -51,60 +53,12 @@ public class Person implements Serializable {
     @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE}, fetch = FetchType.LAZY)
     private List<Address> addresses = new ArrayList<>();
 
-
-    public String getFirstName() {
-        return firstName;
+    public Long getId() {
+        return id;
     }
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
+    public void setId(Long id) {
+        this.id = id;
     }
 
-    public String getMiddleName() {
-        return middleName;
-    }
-
-    public void setMiddleName(String middleName) {
-        this.middleName = middleName;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public List<Phone> getPhones() {
-        return phones;
-    }
-
-    public void setPhones(List<Phone> phones) {
-        this.phones = phones;
-    }
-
-    public Passport getPassportDetails() {
-        return passportDetails;
-    }
-
-    public void setPassportDetails(Passport passportDetails) {
-        this.passportDetails = passportDetails;
-    }
-
-    public List<Address> getAddresses() {
-        return addresses;
-    }
-
-    public void setAddresses(List<Address> addresses) {
-        this.addresses = addresses;
-    }
 }

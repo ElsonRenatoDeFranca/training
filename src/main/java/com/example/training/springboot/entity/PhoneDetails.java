@@ -2,6 +2,9 @@ package com.example.training.springboot.entity;
 
 
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -14,6 +17,8 @@ import java.io.Serializable;
  */
 @Entity(name = "PHONE_DETAILS")
 @Data
+@Setter
+@Getter
 public class PhoneDetails implements Serializable{
 
     @Id
@@ -32,36 +37,4 @@ public class PhoneDetails implements Serializable{
 
     @Column(name = "PHONE_TYPE")
     private String phoneType;
-
-    public String getManufacturer() {
-        return manufacturer;
-    }
-
-    public void setManufacturer(String manufacturer) {
-        this.manufacturer = manufacturer;
-    }
-
-    public String getModel() {
-        return model;
-    }
-
-    public void setModel(String model) {
-        this.model = model;
-    }
-
-    public String getColor() {
-        return color;
-    }
-
-    public void setColor(String color) {
-        this.color = color;
-    }
-
-    public String getPhoneType() {
-        return phoneType;
-    }
-
-    public void setPhoneType(String phoneType) {
-        this.phoneType = phoneType;
-    }
 }
