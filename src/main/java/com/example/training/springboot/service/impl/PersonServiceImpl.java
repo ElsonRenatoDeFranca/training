@@ -105,11 +105,13 @@ public class PersonServiceImpl implements IPersonService {
 
     @Override
     public void updatePerson(Long id, Person person) {
+        person.setId(id);
         personAppRepository.save(person);
     }
 
     @Override
     public void deletePerson(Long id) {
+        personAppRepository.deleteById(id);
     }
 
 }

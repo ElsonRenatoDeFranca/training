@@ -2,6 +2,8 @@ package com.example.training.springboot.entity;
 
 
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -16,6 +18,8 @@ import java.io.Serializable;
  * Created by e068635 on 9/21/2018.
  */
 @Data
+@Setter
+@Getter
 @Entity(name = "PHONE")
 public class Phone implements Serializable {
 
@@ -29,20 +33,4 @@ public class Phone implements Serializable {
 
     @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
     private PhoneDetails details;
-
-    public String getPhoneNumber() {
-        return phoneNumber;
-    }
-
-    public void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
-    }
-
-    public PhoneDetails getDetails() {
-        return details;
-    }
-
-    public void setDetails(PhoneDetails details) {
-        this.details = details;
-    }
 }
