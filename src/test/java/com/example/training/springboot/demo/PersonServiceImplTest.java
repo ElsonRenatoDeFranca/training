@@ -8,10 +8,15 @@ import com.example.training.springboot.entity.Phone;
 import com.example.training.springboot.entity.PhoneDetails;
 import com.example.training.springboot.service.IPersonService;
 import com.example.training.springboot.service.impl.PersonServiceImpl;
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.rules.ExpectedException;
 import org.junit.runner.RunWith;
+import org.mockito.ArgumentCaptor;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
+import org.mockito.invocation.InvocationOnMock;
+import org.mockito.stubbing.Answer;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.mockito.junit.MockitoJUnitRunner;
 
@@ -28,7 +33,11 @@ import static org.hamcrest.Matchers.hasSize;
 import static org.hamcrest.Matchers.is;
 import static org.hamcrest.Matchers.notNullValue;
 import static org.junit.Assert.assertThat;
+import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyLong;
+import static org.mockito.Mockito.doAnswer;
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 /**
@@ -44,9 +53,11 @@ public class PersonServiceImplTest {
     @InjectMocks
     private IPersonService personService = new PersonServiceImpl();
 
+    @Rule
+    public ExpectedException thrown = ExpectedException.none();
 
     @Test
-    public void testFindAll_shouldReturnNotEmptyList_whenSearchIsDoneW(){
+    public void testFindAll_shouldReturnPersonList_whenSearchIsDoneWithoutAnyCriteria(){
 
         //When
         when(personAppRepository.findAll()).thenReturn(getPeople());
@@ -66,16 +77,62 @@ public class PersonServiceImplTest {
     }
 
     @Test
-    public void testFinPersonById_shouldReturnNotEmptyList_whenSearchIsDoneW() {
+    public void testFindPersonById_shouldReturnPerson_whenSearchByPersonId() {
 
         //When
         when(personAppRepository.findById(anyLong())).thenReturn(Optional.of(getPerson()));
 
+        Person person = personService.findPersonById(1L);
+
+        //Then
+        assertThat(person,is(notNullValue()));
+        assertThat(person, hasProperty("id", is(notNullValue())));
+        assertThat(person, hasProperty("id", is(equalTo(1L))));
+    }
+
+    @Test
+    public void testSave() {
+
+        doAnswer(invocation -> {
+            Object[] arguments = invocation.getArguments();
+            Person person = (Person) arguments[0];
+            person.setId(1L);
+            person.setMiddleName("Middle Name");
+
+            return null;
+        }).when(personAppRepository).save(any(Person.class));
+
+        this.personService.savePerson(getPerson());
+
+        ArgumentCaptor<Person> personEntity = ArgumentCaptor.forClass(Person.class);
+        verify(personAppRepository, times(1)).save(personEntity.capture());
+
+        assertThat(personEntity.getValue().getId(),is(notNullValue()));
+        assertThat(personEntity.getValue().getFirstName(),is(notNullValue()));
     }
 
 
+    @Test
+    public void testUpdate() {
 
-        private List<Person> getPeople(){
+        doAnswer(invocation -> {
+            Object[] arguments = invocation.getArguments();
+            Person person = (Person) arguments[0];
+            person.setId(1L);
+
+            return null;
+        }).when(personAppRepository).save(any(Person.class));
+
+        this.personService.updatePerson(1L,getPerson());
+
+        ArgumentCaptor<Person> personEntity = ArgumentCaptor.forClass(Person.class);
+        verify(personAppRepository, times(1)).save(personEntity.capture());
+
+        assertThat(personEntity.getValue().getId(),is(notNullValue()));
+    }
+
+
+    private List<Person> getPeople(){
         List<Person> people = new ArrayList<>();
         people.add(getPerson());
         return people;
